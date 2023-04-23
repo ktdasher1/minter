@@ -1,4 +1,11 @@
 module.exports = {
+    babel: {
+        plugins: [
+            "@babel/plugin-proposal-logical-assignment-operators",
+            '@babel/plugin-proposal-nullish-coalescing-operator',
+            '@babel/plugin-proposal-optional-chaining',
+        ],
+    },
     webpack: {
         alias: {},
         configure: (webpackConfig, {env, paths}) => {

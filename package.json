@@ -5,6 +5,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.20.7",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@coinbase/wallet-sdk": "^3.1.0",
     "@craco/craco": "^6.4.2",
     "@emotion/react": "^11.7.0",
@@ -25,7 +28,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "dev": "craco start",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
