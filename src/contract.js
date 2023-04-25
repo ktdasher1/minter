@@ -10,7 +10,8 @@ export const initContract = async (_web3, contract, shouldSwitchNetwork=true) =>
     let currentNetwork = await getCurrentNetwork();
     if (shouldSwitchNetwork && !contract.allowedNetworks.includes(currentNetwork)) {
         await switchNetwork(contract.allowedNetworks[0])
-        currentNetwork = await getCurrentNetwork();
+        // currentNetwork = await getCurrentNetwork();
+        await getCurrentNetwork();
     }
     const address = contract.address[contract.allowedNetworks[0]];
     const abi = contract.abi;
@@ -44,7 +45,9 @@ export const fetchABI = async (address, chainID) => {
     if (remoteABI)
         return remoteABI
 
-    const abi = await fetch(`https://metadata.buildship.xyz/api/v1.1/contract/${address}?network_id=${chainID}`)
+    const scanner = window.DEFAULTS.abiFetchURL ?? `https://metadata.buildship.xyz/api/v1.1/contract/${address}?network_id=${chainID}`
+    const abi = await fetch(scanner)
+        // .then(r => r.json())
         .then(r => r.json())
         .then(async ({ abi, isProxy, implementation }) => {
             if (isProxy) {
@@ -57,10 +60,10 @@ export const fetchABI = async (address, chainID) => {
             }
             return abi
         })
-        .catch(e => null)
+        .catch(() => null)
 
     if (!abi) {
-        console.log("No ABI returned from https://metadata.buildship.xyz")
+        console.log(`No ABI returned from ${scanner}`)
         const embeddedMainABI = getEmbeddedMainABI(address)
         if (!embeddedMainABI) {
             alert(`Error: no ABI loaded for ${address}. Please contact support`)

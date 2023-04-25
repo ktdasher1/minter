@@ -107,19 +107,19 @@ export const showMintModal = (quantity) => {
     modalRef.current?.setIsOpen(true);
 }
 
-const styles = {
-    mintOption: {
-        padding: "16px",
-        marginLeft: "12px",
-        marginRight: "12px",
-        textAlign: "center",
-
-        ":hover": {
-            cursor: "pointer",
-            backgroundColor: "rgba(0, 0, 0, 0.04)",
-            borderRadius: "16px"
-        }
-    },
-}
+// const styles = {
+//     mintOption: {
+//         padding: "16px",
+//         marginLeft: "12px",
+//         marginRight: "12px",
+//         textAlign: "center",
+//
+//         ":hover": {
+//             cursor: "pointer",
+//             backgroundColor: "rgba(0, 0, 0, 0.04)",
+//             borderRadius: "16px"
+//         }
+//     },
+// }
 
 export default React.forwardRef(MintModal);

@@ -97,29 +97,29 @@ const getWeb3ModalProviderOptions = ({
     // Actually opens WalletConnect
     // TODO: start using this if MetaMask app stops crashes
     // TODO: experiment with MM + custom Infura for WalletConnect
-    const fakeMetamaskProvider = {
-        "custom-fake-metamask": {
-            display: {
-                logo: injected.METAMASK.logo,
-                name: "MetaMask",
-                description: "Connect MetaMask mobile wallet via QR code"
-            },
-            package: WalletConnectProvider,
-            options: {
-                rpc: objectMap(NETWORKS, (value) => (value.rpcURL)),
-                qrcodeModalOptions: {
-                    desktopLinks: ["metamask"]
-                },
-            },
-            connector: async (ProviderPackage, options) => {
-                const provider = new ProviderPackage(options);
-
-                await provider.enable();
-
-                return provider;
-            }
-        }
-    }
+    // const fakeMetamaskProvider = {
+    //     "custom-fake-metamask": {
+    //         display: {
+    //             logo: injected.METAMASK.logo,
+    //             name: "MetaMask",
+    //             description: "Connect MetaMask mobile wallet via QR code"
+    //         },
+    //         package: WalletConnectProvider,
+    //         options: {
+    //             rpc: objectMap(NETWORKS, (value) => (value.rpcURL)),
+    //             qrcodeModalOptions: {
+    //                 desktopLinks: ["metamask"]
+    //             },
+    //         },
+    //         connector: async (ProviderPackage, options) => {
+    //             const provider = new ProviderPackage(options);
+    //
+    //             await provider.enable();
+    //
+    //             return provider;
+    //         }
+    //     }
+    // }
 
     // Don't show separate Metamask option on Safari, Opera, Firefox desktop
     const allProviderOptions = isDesktopNoInjectedProvider ? basicProviderOptions : {
@@ -135,7 +135,7 @@ const getWeb3ModalProviderOptions = ({
 const initWeb3Modal = (forceConnect, isMobileOnlyInjectedProvider) => {
     const isDesktopNoInjectedProvider =  !isMobile() && !window.ethereum
 
-    const web3Modal = new Web3Modal({
+    return new Web3Modal({
         cacheProvider: false,
         // Use custom Metamask provider because of conflicts with Coinbase injected provider
         // On mobile apps with injected web3, use ONLY injected providers
@@ -147,7 +147,6 @@ const initWeb3Modal = (forceConnect, isMobileOnlyInjectedProvider) => {
         })
     });
 
-    return web3Modal
 }
 
 const initWeb3 = async (forceConnect = false) => {
@@ -279,7 +278,6 @@ const tryInitWeb3 = async (forceConnect) => {
             alert(`Error in initWeb3(${forceConnect}): ${message?.toString()}`)
             console.error(e)
         }
-        return
     }
 }
 

@@ -1,4 +1,4 @@
-import { getWalletAddressOrConnect, web3 } from "../wallet.js";
+import { getWalletAddressOrConnect } from "../wallet.js";
 import { formatValue} from "../utils.js";
 import { NFTContract } from "../contract.js"
 import { buildTx } from "../tx";

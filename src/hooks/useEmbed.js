@@ -12,6 +12,7 @@ export const useEmbed = () => {
                     console.error("Error fetching embed info", error)
                     return
                 }
+                debugger;
                 setEmbed(data)
             })
         }

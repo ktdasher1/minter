@@ -17,6 +17,9 @@ export const Attribution = (props) => {
                 if (developer.toLowerCase().includes("buildship")) {
                     setAttributionText(_ => "Launched with Buildship")
                     setIsBuildshipUser(true)
+                } else {
+                    setAttributionText(_ => developer)
+                    setIsBuildshipUser(false)
                 }
             }
         }
@@ -55,7 +58,9 @@ export const Attribution = (props) => {
                 ...props?.sx
             }}>
         {/* for SEO */}
-        <a href="https://buildship.xyz" />
+        <a href="https://buildship.xyz" >
+            BuildShip XYZ
+        </a>
         <div style={{
             display: "flex",
             justifyContent: "center",
@@ -68,6 +73,7 @@ export const Attribution = (props) => {
                 width={16}
                 height={16}
                 src={`${getBaseURL()}/images/buildship${window.STYLES?.theme === "dark" ? "-white" : ""}.svg`}
+                alt=""
             />
         </div>
         <Box sx={{
