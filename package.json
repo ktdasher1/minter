@@ -1,6 +1,6 @@
 {
-  "name": "webflow-nft-components",
-  "homepage": "https://ktdasher1.github.io/web",
+  "name": "minter",
+  "homepage": "http://ktdasher1.github.io/minter",
   "repository": "github:buildship-dev/webflow-nft-components",
   "version": "0.1.0",
   "private": true,
