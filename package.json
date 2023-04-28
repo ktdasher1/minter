@@ -1,6 +1,6 @@
 {
   "name": "webflow-nft-components",
-  "homepage": "https://buildship.xyz",
+  "homepage": "https://ktdasher1.github.io/web",
   "repository": "github:buildship-dev/webflow-nft-components",
   "version": "0.1.0",
   "private": true,
@@ -31,7 +31,7 @@
     "dev": "NODE_OPTIONS=--openssl-legacy-provider craco start",
     "build": "NODE_OPTIONS=--openssl-legacy-provider craco build",
     "predeploy": "NODE_OPTIONS=--openssl-legacy-provider craco build",
-    "deploy" : "gh-pages -d build",
+    "deploy": "gh-pages -b maser -d build",
     "test": "NODE_OPTIONS=--openssl-legacy-provider craco test",
     "eject": "react-scripts eject"
   },
@@ -52,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
